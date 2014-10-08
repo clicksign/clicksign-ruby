@@ -1,7 +1,7 @@
 module Clicksign
   class Base
     def self.accept_header
-      { accept: Clicksign.format }
+      { accept: 'json' }
     end
 
     def self.request(method, *params)
@@ -14,16 +14,8 @@ module Clicksign
         "?access_token=#{Clicksign.token}"
     end
 
-    def self.is_json?
-      Clicksign.format == 'json'
-    end
-
     def self.parse(response)
-      if is_json?
-        JSON[response]
-      else
-        Hash.from_xml(response)
-      end
+      JSON[response]
     end
   end
 end
