@@ -1,0 +1,67 @@
+[
+  {
+    "document": {
+      "key": "1123-4567-89ab-cdef",
+      "original_name": "document-2.pdf",
+      "status": "completed",
+      "archive_id": 2,
+      "created_at": "2014-06-18T09:55:16.873-03:00",
+      "updated_at": "2014-06-18T10:02:03.056-03:00",
+      "user_key":"A0BF-848B-0A42-916C",
+      "list": {
+        "locked":null,
+        "started_at":null,
+        "created_at":"2014-06-18T09:57:14.434-03:00",
+        "updated_at":"2014-06-18T09:57:14.434-03:00",
+        "user_key":"A0BF-848B-0A42-916C",
+        "signatures": []
+      }
+    }
+  },
+  {
+    "document": {
+      "key": "0123-4567-89ab-cdef",
+      "original_name": "document-1.pdf",
+      "status": "completed",
+      "archive_id": 1,
+      "created_at": "2014-06-18T09:55:16.873-03:00",
+      "updated_at": "2014-06-18T10:02:03.056-03:00",
+      "user_key":"A0BF-848B-0A42-916C",
+      "list": {
+        "locked":null,
+        "started_at":"2014-06-18T09:58:46.450-03:00",
+        "created_at":"2014-06-18T09:57:14.434-03:00",
+        "updated_at":"2014-06-18T09:58:46.452-03:00",
+        "user_key":"A0BF-848B-0A42-916C",
+        "signatures": [
+          {
+            "display_name":"John Doe",
+            "title":null,
+            "company_name":null,
+            "key":"A0BF-848B-0A42-916C",
+            "act":"receipt",
+            "decision":"agreed",
+            "address":"201.81.113.174",
+            "email":"john.doe@example.com",
+            "signed_at":"2014-06-18T09:59:58.713-03:00",
+            "created_at":"2014-06-18T09:57:24.191-03:00",
+            "updated_at":"2014-06-18T09:59:58.836-03:00"
+          },
+          {
+            "display_name":"Jane Doe",
+            "title":null,
+            "company_name":null,
+            "key":"A0BF-848B-0A42-916C",
+            "act":"intervening",
+            "decision":"agreed",
+            "address":"201.81.113.174",
+            "email":"jane.doe@example.com",
+            "signed_at":"2014-06-18T10:01:18.327-03:00",
+            "created_at":"2014-06-18T09:57:31.114-03:00",
+            "updated_at":"2014-06-18T10:01:18.389-03:00"
+          }
+        ]
+      }
+    }
+  }
+]
