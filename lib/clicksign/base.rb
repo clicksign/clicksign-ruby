@@ -15,6 +15,7 @@ module Clicksign
     end
 
     def self.parse(response)
+      response = {} if response.empty?
       JSON[response]
     end
   end
