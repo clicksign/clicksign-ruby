@@ -6,12 +6,6 @@ module Clicksign
         {}
     end
 
-    def self.find(key, id)
-      request :get,
-        api_url('documents', key, 'hooks', id),
-        {}
-    end
-
     def self.create(key, url)
       request :post,
         api_url('documents', key, 'hooks'),
