@@ -1,4 +1,4 @@
-# clicksign
+# Clicksign Ruby Client
 
 Official gem to comunicate with the **[Clicksign Rest API](http://clicksign.github.io/rest-api/)**.
 
