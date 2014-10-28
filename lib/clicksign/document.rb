@@ -22,7 +22,7 @@ module Clicksign
     def self.create_list(key, signers, skip_email = true)
       request :post,
         api_url('documents', key, 'list'),
-        { signers: Array.wrap(signers), skip_email: skip_email }.to_json,
+        { signers: [signers].flatten(1), skip_email: skip_email }.to_json,
         content_type: "json"
     end
   end
