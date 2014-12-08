@@ -12,10 +12,13 @@ module Clicksign
         {}
     end
 
-    def self.create(file)
+    def self.create(file, params = {})
+      signers = params.delete(:signers)
+      params['signers[]'] = [signers].flatten(1) if signers
+
       request :post,
         api_url('documents'),
-        { "document[archive][original]" => file },
+        { "document[archive][original]" => file }.merge(params),
         {}
     end
 
