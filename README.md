@@ -49,6 +49,17 @@ To upload a new document to Clicksign you can use the following snippet:
 document = Clicksign::Document.create(File.new('example.pdf'))
 ```
 
+You can also upload a new document and at the same time set up a signature list
+as follow:
+
+```ruby
+document = Clicksign::Document.create(File.new('example.pdf'), signers: [{ act: 'sign', email: 'john.doe@example.com' }], message: 'Please sign it', skip_email: true)
+```
+
+It is important to notice that the additional parameters to `create` method is
+the same as the ones in the section [Creating a signature list](#user-content-creating-a-signature-list)
+
+
 ### Retrieving a document
 
 ```ruby
