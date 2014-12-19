@@ -28,4 +28,29 @@ describe Clicksign::Document do
       expect(record['document']['status']).to eq 'completed'
     end
   end
+
+  describe '.create' do
+    it 'sends document and list params' do
+      file = File.new('spec/fixtures/all_documents.json')
+      signers = { act: 'sign', email: 'john.doe@example.com' }
+      message = 'Sign it please.'
+      skip_email = false
+
+      expect(RestClient).to receive(:post)
+      .with(
+        "http://example.com/v1/documents?access_token=my_token",
+        {
+        'document[archive][original]' => file,
+        message: message,
+        skip_email: skip_email,
+        'signers[]'  => [signers],
+      }, { accept: 'json' }).and_return({})
+
+      Clicksign::Document.create(file, {
+        signers: signers,
+        message: message,
+        skip_email: skip_email
+      })
+    end
+  end
 end
