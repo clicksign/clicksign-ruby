@@ -28,5 +28,12 @@ module Clicksign
         { signers: [signers].flatten(1), skip_email: skip_email }.to_json,
         content_type: "json"
     end
+
+    def self.resend(key, email, message)
+      request :post,
+        api_url('documents', key, 'resend'),
+        { email: email, message: message }.to_json,
+        content_type: "json"
+    end
   end
 end

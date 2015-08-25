@@ -53,4 +53,21 @@ describe Clicksign::Document do
       })
     end
   end
+
+  describe '.resend' do
+    it 'resends a document to a email' do
+      key = "1123-4567-89ab-cdef"
+      email = 'jane.doe@example.com'
+      message = 'This is a reminder for you. Please sign the document.'
+
+      expect(RestClient).to receive(:post)
+      .with(
+        "http://example.com/v1/documents/#{key}/resend?access_token=my_token",
+        { email: email,
+        message: message }.to_json,
+        { content_type: 'json', accept: 'json' }).and_return({})
+
+      Clicksign::Document.resend(key, email, message)
+    end
+  end
 end
