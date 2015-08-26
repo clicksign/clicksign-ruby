@@ -70,10 +70,11 @@ found = Clicksign::Document.find(document_key)
 
 ```ruby
 zip = Clicksign::Document.download(document_key)
+File.open('mydoc.zip', 'wb') { |f| f.write(zip) } if zip
 ```
 
 If _found_ is _nil_, it means that the server is preparing the zip file.
-When the zip is ready, its contents are retrieved after another request.
+When the zip is ready, its contents are retrieved.
 
 ### Creating a signature list
 
