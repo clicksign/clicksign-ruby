@@ -55,7 +55,7 @@ describe Clicksign::Document do
   end
 
   describe '.resend' do
-    it 'resends a document to a email' do
+    it 'resends document to an email' do
       key = "1123-4567-89ab-cdef"
       email = 'jane.doe@example.com'
       message = 'This is a reminder for you. Please sign the document.'
@@ -72,7 +72,7 @@ describe Clicksign::Document do
   end
 
   describe '.download' do
-    it 'downloads a document' do
+    it 'downloads document' do
       key = "1123-4567-89ab-cdef"
       expect(RestClient).to receive(:get)
       .with("http://example.com/v1/documents/#{key}/download?access_token=my_token")
