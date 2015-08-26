@@ -70,4 +70,15 @@ describe Clicksign::Document do
       Clicksign::Document.resend(key, email, message)
     end
   end
+
+  describe '.download' do
+    it 'downloads a document' do
+      key = "1123-4567-89ab-cdef"
+      expect(RestClient).to receive(:get)
+      .with("http://example.com/v1/documents/#{key}/download?access_token=my_token")
+      .and_return({})
+
+      Clicksign::Document.download(key)
+    end
+  end
 end
