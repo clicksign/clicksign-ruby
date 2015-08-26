@@ -66,6 +66,15 @@ the same as the ones in the section [Creating a signature list](#user-content-cr
 found = Clicksign::Document.find(document_key)
 ```
 
+### Downloading a document
+
+```ruby
+zip = Clicksign::Document.download(document_key)
+```
+
+If _found_ is _nil_, it means that the server is preparing the zip file.
+When the zip is ready, its contents are retrieved after another request.
+
 ### Creating a signature list
 
 The method `Clicksign::Document.create_list` accepts **3 arguments**, the latter being optional.
@@ -82,6 +91,15 @@ Example:
 document_key = KEY
 signers = [{ email: 'john.doe@example.com', act: 'sign' }]
 result = Clicksign::Document.create_list(document, signers, true)
+```
+
+### Resending a signature request
+
+Use the following snippet to send a email to a signer that have not signed yet:
+
+```ruby
+messsage = 'This is a reminder for you to sign the document.'
+Clicksign::Document.resend(key, email, message)
 ```
 
 ### Hooks
