@@ -103,6 +103,14 @@ messsage = 'This is a reminder for you to sign the document.'
 Clicksign::Document.resend(key, email, message)
 ```
 
+### Canceling a document
+
+```ruby
+doc = Clicksign::Document.cancel(document_key)
+```
+
+The method returns the canceled document.
+
 ### Hooks
 
 You can perform three different actions with hooks: **retrieve** all, **create** a new one or **delete** an existing hook.

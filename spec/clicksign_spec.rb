@@ -71,6 +71,19 @@ describe Clicksign::Document do
     end
   end
 
+  describe '.cancel' do
+    it 'cancels document' do
+      key = "1123-4567-89ab-cdef"
+
+      expect(RestClient).to receive(:post)
+      .with(
+        "http://example.com/v1/documents/#{key}/cancel?access_token=my_token",
+        {}.to_json, { content_type: 'json', accept: 'json' }).and_return({})
+
+      Clicksign::Document.cancel(key)
+    end
+  end
+
   describe '.download' do
     it 'downloads document' do
       key = "1123-4567-89ab-cdef"
