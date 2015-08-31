@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    clicksign (0.1.4)
+    clicksign (0.1.5)
       rest-client
 
 GEM
@@ -43,6 +43,3 @@ DEPENDENCIES
   clicksign!
   rake
   rspec (~> 3.0)
-
-BUNDLED WITH
-   1.10.6

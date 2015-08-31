@@ -36,6 +36,12 @@ module Clicksign
         content_type: 'json'
     end
 
+    def self.cancel(key)
+      request :post,
+        api_url('documents', key, 'cancel'),
+        {}.to_json, content_type: 'json'
+    end
+
     def self.download(key)
       RestClient.get(api_url('documents', key, 'download')) do |response, request, result, &block|
         case response.code
