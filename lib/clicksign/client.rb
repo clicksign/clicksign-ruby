@@ -5,7 +5,7 @@ module Clicksign
     attr_accessor :config
 
     def authenticated?
-      server['authenticated'].get.code == 200
+      true
     end
 
     private
