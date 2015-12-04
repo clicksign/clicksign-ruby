@@ -4,7 +4,7 @@ require 'clicksign/client'
 
 module Clicksign
   def self.configure(&block)
-    Config.configure(&block)
+    Config.setup(&block)
   end
 
   def self.config
@@ -13,7 +13,7 @@ module Clicksign
 
   def self.client
     Client.new.tap do |client|
-      client.config = configure
+      client.config = config
     end
   end
 end

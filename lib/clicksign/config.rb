@@ -6,7 +6,7 @@ module Clicksign
 
     attr_accessor :access_token, :endpoint
 
-    def self.configure
+    def self.setup
       yield(instance) if block_given?
     end
   end
