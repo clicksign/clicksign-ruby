@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruby/version'
+require 'clicksign/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruby"
-  spec.version       = Ruby::VERSION
+  spec.name          = "clicksign"
+  spec.version       = Clicksign::VERSION
   spec.authors       = ["Daniel Libanori"]
   spec.email         = ["daniellibanori@gmail.com"]
 

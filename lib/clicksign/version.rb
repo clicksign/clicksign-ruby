@@ -1,3 +1,3 @@
-module Ruby
+module Clicksign
   VERSION = "0.1.0"
 end
