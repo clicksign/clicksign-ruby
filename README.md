@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/clicksign/clicksign-ruby.svg)](https://travis-ci.org/clicksign/clicksign-ruby)
+[![Code Climate](https://codeclimate.com/github/clicksign/clicksign-ruby/badges/gpa.svg)](https://codeclimate.com/github/clicksign/clicksign-ruby)
+[![Issue Count](https://codeclimate.com/github/clicksign/clicksign-ruby/badges/issue_count.svg)](https://codeclimate.com/github/clicksign/clicksign-ruby)
+[![Coverage Status](https://coveralls.io/repos/clicksign/clicksign-ruby/badge.svg?branch=master&service=github)](https://coveralls.io/github/clicksign/clicksign-ruby?branch=master)
+
 # Clicksign
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/clicksign`. To experiment with that code, run `bin/console` for an interactive prompt.
