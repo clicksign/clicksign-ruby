@@ -4,16 +4,20 @@ require 'clicksign/client'
 
 module Clicksign
   def self.configure(&block)
-    Config.setup(&block)
+    yield(config) if block_given?
+  end
+
+  def self.client(config = Config.default, &block)
+    Client.setup do |client|
+      if block_given?
+        client.config = Config.setup(&block)
+      else
+        client.config = config
+      end
+    end
   end
 
   def self.config
-    Config.instance
-  end
-
-  def self.client
-    Client.new.tap do |client|
-      client.config = config
-    end
+    Config.default
   end
 end
