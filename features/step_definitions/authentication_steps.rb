@@ -11,3 +11,13 @@ end
 Então(/^ele deve estar autenticado$/) do
   expect(@client).to be_authenticated
 end
+
+Dado(/^que tenho uma chave de API inválida$/) do
+  Clicksign.configure do |config|
+    config.access_token = 'invalid'
+  end
+end
+
+Então(/^ele não deve estar autenticado$/) do
+  expect(@client).to_not be_authenticated
+end

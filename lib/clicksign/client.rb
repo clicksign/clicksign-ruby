@@ -5,12 +5,16 @@ module Clicksign
     attr_accessor :config
 
     def authenticated?
-      true
+      begin
+        resource['v1/whoami'].get(params: { access_token: config.access_token })
+      rescue RestClient::Unauthorized
+        false
+      end
     end
 
     private
-    def server
-      RestClient::Resource.new(config.endpoint, access_token: config.access_token)
+    def resource
+      RestClient::Resource.new(config.endpoint)
     end
   end
 end
