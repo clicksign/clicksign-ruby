@@ -1,7 +1,7 @@
 # language: pt
 Funcionalidade: Autenticação
 
-  Como programador
+  Como parceiro
   Quero me autenticar
   Para executar ações na Clicksign
 
