@@ -8,13 +8,7 @@ module Clicksign
   end
 
   def self.client(config = Config.default, &block)
-    Client.setup do |client|
-      if block_given?
-        client.config = Config.setup(&block)
-      else
-        client.config = config
-      end
-    end
+    Client.setup { |client| client.config = config.copy(&block) }
   end
 
   def self.config

@@ -5,10 +5,7 @@ describe Clicksign::Client, stub: 'whoami' do
 
   context 'with valid token' do
     before do
-      Clicksign.configure do |config|
-        config.endpoint = 'http://example.com'
-        config.access_token = 'token'
-      end
+      Clicksign.configure { |config| config.access_token = 'token' }
     end
 
     it { expect(client).to be_authenticated }
@@ -16,10 +13,7 @@ describe Clicksign::Client, stub: 'whoami' do
 
   context 'with valid intoken' do
     before do
-      Clicksign.configure do |config|
-        config.endpoint = 'http://example.com'
-        config.access_token = 'invalid'
-      end
+      Clicksign.configure { |config| config.access_token = 'invalid' }
     end
 
     it { expect(client).to_not be_authenticated }
