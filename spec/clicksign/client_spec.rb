@@ -1,21 +1,13 @@
 require 'spec_helper'
 
 describe Clicksign::Client, stub: 'whoami' do
-  subject(:client) { Clicksign.client }
-
-  context 'with valid token' do
-    before do
-      Clicksign.configure { |config| config.access_token = 'token' }
+  subject(:client) do
+    Clicksign.client do |config|
+      config.endpoint = 'http://example.org'
+      config.access_token = 'token'
     end
-
-    it { expect(client).to be_authenticated }
   end
 
-  context 'with valid intoken' do
-    before do
-      Clicksign.configure { |config| config.access_token = 'invalid' }
-    end
-
-    it { expect(client).to_not be_authenticated }
-  end
+  it { expect(client.endpoint).to eq('http://example.org') }
+  it { expect(client.access_token).to eq('token') }
 end
