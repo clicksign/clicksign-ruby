@@ -19,11 +19,11 @@ module Clicksign::Command::Documents
     end
 
     def create(params)
-      Document.create(client, params)
+      Clicksign::Document.create(client, params)
     end
 
     def find(key)
-      Document.new(client, key)
+      Clicksign::Document.new(client, key)
     end
   end
 end

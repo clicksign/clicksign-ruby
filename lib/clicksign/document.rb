@@ -17,7 +17,7 @@ module Clicksign
       body['message'] = message
       body['skip_email'] = skip_email
 
-      build client['documents'].post(body)
+      build client['documents'].post(body)[:document]
     end
 
     def self.build(attributes = {})
