@@ -11,7 +11,7 @@ describe Clicksign::Command::Whoami, stub: 'whoami' do
     it { expect(client).to be_authenticated }
   end
 
-  context 'with valid intoken' do
+  context 'with invalid token' do
     before do
       Clicksign.configure { |config| config.access_token = 'invalid' }
     end
