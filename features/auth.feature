@@ -1,5 +1,5 @@
 # language: pt
-Funcionalidade: Autenticação
+Funcionalidade: Autenticação do usuário
 
   Como parceiro
   Quero me autenticar
