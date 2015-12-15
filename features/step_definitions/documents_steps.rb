@@ -3,9 +3,17 @@ Dado(/^que minha conta não tem documentos$/) do
 end
 
 Quando(/^obtenho a listagem dos documento$/) do
-  @client.documents.all
+  @documents = @client.documents.all
 end
 
 Então(/^a listagem dos documentos deve estar vazia$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(@documents).to be_empty
+end
+
+Dado(/^que minha conta tem alguns documentos$/) do
+  @client = Clicksign.client { |config| config.access_token = ENV['ACCESS_TOKEN'] }
+end
+
+Então(/^a listagem dos documentos não deve estar vazia$/) do
+  expect(@documents).to_not be_empty
 end

@@ -8,7 +8,7 @@ module Clicksign
   end
 
   def self.client(config = Config.default, &block)
-    Client.setup { |client| client.config = config.copy(&block) }
+    Client.new.tap { |client| client.config = config.copy(&block) }
   end
 
   def self.config

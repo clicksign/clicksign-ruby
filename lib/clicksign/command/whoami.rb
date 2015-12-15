@@ -2,7 +2,7 @@ require 'clicksign/command'
 
 module Clicksign::Command::Whoami
   def authenticated?
-    get('api/v1/whoami')
+    resource['whoami'].get
   rescue RestClient::Unauthorized
     false
   end
