@@ -1,6 +1,6 @@
 require 'json'
 
-shared_context stub: 'documents' do
+shared_context 'mock list' do
   before do
     stub_request(:get, 'http://example.com/api/v1/documents')
     .with(query: { access_token: 'empty' })

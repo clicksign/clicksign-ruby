@@ -18,6 +18,10 @@ module Clicksign::Command::Documents
       (@cache ||= client['documents'].get).each(&block)
     end
 
+    def create(params)
+      Document.create(client, params)
+    end
+
     def find(key)
       Document.new(client, key)
     end

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe Clicksign::Command::Documents, stub: 'documents' do
+describe Clicksign::Command::Documents do
+  include_context 'mock list'
   subject(:client) { Clicksign.client }
 
   context 'without any document' do

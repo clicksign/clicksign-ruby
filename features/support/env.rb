@@ -4,7 +4,11 @@ require 'clicksign'
 
 Coveralls.wear!
 
-Clicksign.configure do |config|
-  config.endpoint = ENV['ENDPOINT']
-  config.access_token = ENV['ACCESS_TOKEN']
+Before do
+  Clicksign.configure do |config|
+    config.endpoint = ENV['ENDPOINT']
+    config.access_token = ENV['ACCESS_TOKEN']
+  end
+
+  @client = Clicksign.client
 end
