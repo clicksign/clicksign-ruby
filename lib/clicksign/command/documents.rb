@@ -1,4 +1,5 @@
 require 'clicksign/command'
+require 'clicksign/document'
 
 module Clicksign::Command::Documents
   def documents(reload = false)
@@ -14,7 +15,7 @@ module Clicksign::Command::Documents
     private :to_a
 
     def each(&block)
-      (@cache ||= @client['documents'].get).each(&block)
+      (@cache ||= client['documents'].get).each(&block)
     end
 
     def find(key)
