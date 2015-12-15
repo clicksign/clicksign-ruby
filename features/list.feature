@@ -1,5 +1,5 @@
 # language: pt
-Funcionalidade: Listagem de documentos
+Funcionalidade: Listar documentos
 
   Como parceiro
   Quero obter a listagem dos documentos
