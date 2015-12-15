@@ -1,5 +1,5 @@
 # language: pt
-Funcionalidade: Autenticação
+Funcionalidade: Listagem de documentos
 
   Como parceiro
   Quero obter a listagem dos documentos
