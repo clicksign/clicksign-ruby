@@ -4,11 +4,6 @@ rvm:
   - 2.1.7
   - 2.2.3
 before_install: gem install bundler -v 1.10.6
-env:
-  global:
-    - ENDPOINT=https://clicksign-demo.com/api/v1
-    - secure: "CFtjot3aotVn5iVOxfrFQZFsNQZyn+0M9BiBzwfuG0egTsyJN2AGV9yrSz7C9/EJpW6qEjYYJiK0C7oxvvfMkuzDVjOUDn1uMQmjIqtthkSwPuuQ5F4poZNYhiBezZSuCP5aupclum7Axh+8Dk/0xJIkz4gqWnqRD2RWYk444dc="
-    - secure: "BeVmuHCzRpFUZNo9axVN/sB+V7uVahLpT8mOQPRTiJ1bAZBjy0K/MNf+WGWx1e3hsRD0B4IhW1mKcDouwJ2UKwyyt47nNY78uw555Z53zKoISpspm0m7C1PbOVj12MAtqXYaQnTQSQRG866Rpclw1XPFTPhgNWWXJLr3m13goPo="
 notifications:
   email:
     on_sucess: never

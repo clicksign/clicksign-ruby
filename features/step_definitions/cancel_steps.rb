@@ -1,7 +1,11 @@
-Dado(/^que há um documento sendo assinado$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Dado(/^que tenho um documento$/) do
+  @document = @client.documents.create(file: 'binary...')
 end
 
 Quando(/^cancelo o documento$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @document.cancel('cancelado')
+end
+
+Então(/^o documento poussui uma data de cancelamento$/) do
+  expect(@document.canceled_at).to_not be_nil
 end

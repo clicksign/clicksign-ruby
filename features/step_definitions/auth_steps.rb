@@ -1,6 +1,6 @@
 Dado(/^que tenho uma chave de API válida$/) do
   Clicksign.configure do |config|
-    config.access_token = ENV['ACCESS_TOKEN']
+    config.access_token = 'valid'
   end
 end
 

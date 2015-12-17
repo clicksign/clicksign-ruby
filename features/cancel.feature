@@ -6,6 +6,6 @@ Funcionalidade: Cancelar documento
   Para que ele não possa mais ser assindo
 
   Cenário: Alterar status
-    Dado que há um documento sendo assinado
+    Dado que tenho um documento
     Quando cancelo o documento
-    Então o status do documento é "canceled"
+    Então o documento poussui uma data de cancelamento

@@ -1,5 +1,5 @@
 Dado(/^que minha conta não tem documentos$/) do
-  @client = Clicksign.client { |config| config.access_token = ENV['EMPTY_TOKEN'] }
+  @client = Clicksign.client { |config| config.access_token = 'empty' }
 end
 
 Quando(/^obtenho a listagem dos documento$/) do
@@ -11,7 +11,7 @@ Então(/^a listagem dos documentos deve estar vazia$/) do
 end
 
 Dado(/^que minha conta tem alguns documentos$/) do
-  @client = Clicksign.client { |config| config.access_token = ENV['ACCESS_TOKEN'] }
+  @client = Clicksign.client { |config| config.access_token = 'some' }
 end
 
 Então(/^a listagem dos documentos não deve estar vazia$/) do
