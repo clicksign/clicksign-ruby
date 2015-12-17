@@ -9,8 +9,3 @@ Funcionalidade: Cancelar documento
     Dado que há um documento sendo assinado
     Quando cancelo o documento
     Então o status do documento é "canceled"
-
-  Cenário: Notificar signatários
-    Dado que há um documento sendo assinado
-    Quando cancelo o documento
-    Então os signatários que já assinaram não notificados
