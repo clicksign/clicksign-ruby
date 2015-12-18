@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Clicksign::Document do
   include_context 'mock upload'
   include_context 'mock cancel'
+  include_context 'mock download'
 
   let(:client) { Clicksign.client }
   subject(:document) { described_class.create(client, file: 'binary...') }
@@ -41,8 +42,28 @@ describe Clicksign::Document do
     it { expect(document.signers.count).to eq(3) }
   end
 
-  context 'canceling document' do
+  context 'canceling' do
     before { document.cancel! }
     it { expect(document.canceled_at).to_not be_nil }
+  end
+
+  context 'downloading without background processing' do
+    before { document.key = '200' }
+    it { expect(document.download).to be_kind_of(String) }
+  end
+
+  context 'downloading with background processing' do
+    before { document.key = '201' }
+    it { expect(document.download).to be_kind_of(String) }
+  end
+
+  context 'downloading with timeout' do
+    before { document.key = '404' }
+    it { expect { document.download }.to raise_error }
+  end
+
+  context 'downloading with fail' do
+    before { document.key = '500' }
+    it { expect { document.download }.to raise_error }
   end
 end

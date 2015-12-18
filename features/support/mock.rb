@@ -21,4 +21,7 @@ Before do
 
   stub_request(:post, 'http://example.com/documents/17/cancel?access_token=token').
     to_return(status: 200, body: { document: { key: '17', list: { canceled_at: 'now' }}}.to_json)
+
+  stub_request(:get, 'http://example.com/documents/17/download?access_token=token').
+    to_return(status: 200, body: 'content...')
 end
