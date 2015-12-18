@@ -2,26 +2,39 @@ require 'ostruct'
 
 module Clicksign
   class Document
-    attr_accessor :key, :name, :status, :created_at, :started_at, :user_key, :signers
+    attr_accessor :key, :name, :status, :created_at, :started_at, :canceled_at,
+                  :user_key, :signers, :client, :params
 
     def self.create(client, file: nil, signers: [], message: nil, skip_email: true)
-      body = {}
+      params = {}
 
-      body['document[archive][original]'] = file
+      params['document[archive][original]'] = file
 
       signers.each do |email, act|
-        body['signers[]'] ||= []
-        body['signers[]'].push({email: email, act: act})
+        params['signers[]'] ||= []
+        params['signers[]'].push({email: email, act: act})
       end
 
-      body['message'] = message
-      body['skip_email'] = skip_email
+      params['message'] = message
+      params['skip_email'] = skip_email
 
-      build client['documents'].post(body)[:document]
+      new.tap do |document|
+        document.client = client
+        document.params = params
+        document.fetch!
+      end
     end
 
-    def self.build(attributes = {})
+    def self.parse(attributes = {})
       new.parse(attributes)
+    end
+
+    def fetch!
+      parse client['documents'].post(params)[:document]
+    end
+
+    def cancel!
+      parse client['documents'][key]['cancel'].post(nil)[:document]
     end
 
     def parse(attributes = {})
@@ -34,6 +47,7 @@ module Clicksign
       if (list = attributes[:list])
         self.user_key = list[:user_key]
         self.started_at = list[:started_at]
+        self.canceled_at = list[:canceled_at]
 
         signatures = list[:signatures] || []
         signatures.each do |signature|

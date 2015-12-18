@@ -3,7 +3,7 @@ Dado(/^que tenho um documento$/) do
 end
 
 Quando(/^cancelo o documento$/) do
-  @document.cancel('cancelado')
+  @document.cancel!
 end
 
 Então(/^o documento poussui uma data de cancelamento$/) do
