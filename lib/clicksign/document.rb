@@ -60,17 +60,18 @@ module Clicksign
 
     def download(wait = 5)
       Timeout.timeout(wait) do
-        client['documents'][key]['download'].get do |response|
+        loop do
+          client['documents'][key]['download'].get do |response|
 
-          case response.code
-          when 200
-            response
-          when 201
-            sleep 1
-            download
-          else
-            raise RestClient::Exception.new \
-              "Unexpected response: #{response.code}"
+            case response.code
+            when 200
+              return response
+            when 201
+              sleep 1
+            else
+              raise RestClient::Exception.new \
+                "Unexpected response: #{response.code}"
+            end
           end
         end
       end
