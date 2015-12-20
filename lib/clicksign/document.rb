@@ -58,8 +58,8 @@ module Clicksign
       self
     end
 
-    def download
-      Timeout.timeout 5 do
+    def download(wait = 5)
+      Timeout.timeout(wait) do
         client['documents'][key]['download'].get do |response|
 
           case response.code
