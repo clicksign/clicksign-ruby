@@ -59,11 +59,11 @@ describe Clicksign::Document do
 
   context 'downloading with timeout' do
     before { document.key = '404' }
-    it { expect { document.download }.to raise_error }
+    it { expect { document.download }.to raise_error(Timeout::Error) }
   end
 
   context 'downloading with fail' do
     before { document.key = '500' }
-    it { expect { document.download }.to raise_error }
+    it { expect { document.download }.to raise_error(RestClient::Exception) }
   end
 end

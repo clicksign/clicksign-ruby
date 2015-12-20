@@ -61,14 +61,16 @@ module Clicksign
     def download
       Timeout.timeout 5 do
         client['documents'][key]['download'].get do |response|
+
           case response.code
           when 200
             response
           when 201
-            sleep 3
+            sleep 1
             download
           else
-            raise response.description
+            raise RestClient::Exception.new \
+              "Unexpected response: #{response.code}"
           end
         end
       end
