@@ -1,9 +1,9 @@
 # language: pt
-Funcionalidade: Listar documentos
+Funcionalidade: Listar todos os documentos
 
   Como parceiro
-  Quero obter a listagem dos documentos
-  Para saber quais documentos estão na minha conta
+  Quero listar todos os documentos
+  Para para consultar quais documentos estão na minha conta
 
   Cenário: Conta sem documentos
     Dado que minha conta não tem documentos
