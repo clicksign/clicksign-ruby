@@ -2,28 +2,50 @@ require 'clicksign/command'
 require 'clicksign/document'
 
 module Clicksign::Command::Documents
-  def documents(reload = false)
-    @documents = nil if reload
-    @documents ||= Proxy.new.tap { |proxy| proxy.client = self }
+  def documents
+    Collection.new(self)
   end
 
-  class Proxy
+  class Collection
     include Enumerable
-
-    attr_accessor :client
     alias all to_a
     private :to_a
 
-    def each(&block)
-      (@cache ||= client['documents'].get).each(&block)
+    def initialize(client)
+      @client = client
     end
 
-    def create(params)
-      Clicksign::Document.create(client, params)
+    def each(&block)
+      @client['documents'].get.map do |json|
+        build(json[:document])
+      end.each(&block)
+    end
+
+    def create(file: nil, signers: [], message: nil, skip_email: true)
+      params = {}
+
+      params['document[archive][original]'] = file
+
+      signers.each do |email, act|
+        params['signers[]'] ||= []
+        params['signers[]'].push({email: email, act: act})
+      end
+
+      params['message'] = message
+      params['skip_email'] = skip_email
+
+      build @client['documents'].post(params)
     end
 
     def find(key)
-      Clicksign::Document.new(client, key)
+      build @client['documents'][key].get[:document]
+    rescue RestClient::InternalServerError
+      nil
+    end
+
+    private
+    def build(json)
+      Clicksign::Document.parse(@client, json)
     end
   end
 end

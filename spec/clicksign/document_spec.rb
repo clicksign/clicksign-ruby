@@ -6,7 +6,7 @@ describe Clicksign::Document do
   include_context 'mock download'
 
   let(:client) { Clicksign.client }
-  subject(:document) { described_class.create(client, file: 'binary...') }
+  subject(:document) { described_class.parse(client, key: '17', file: 'binary...') }
 
   it { expect(document).to be_kind_of(described_class) }
   it { expect(document.key).to eq('17') }
@@ -31,7 +31,7 @@ describe Clicksign::Document do
       }
     end
 
-    subject(:document) { described_class.parse(attributes) }
+    subject(:document) { described_class.parse(client, attributes) }
 
     it { expect(document.key).to eq('17') }
     it { expect(document.name).to eq('sample.pdf') }

@@ -5,31 +5,14 @@ module Clicksign
     attr_accessor :key, :name, :status, :created_at, :started_at, :canceled_at,
                   :user_key, :signers, :client, :params
 
-    def self.create(client, file: nil, signers: [], message: nil, skip_email: true)
-      params = {}
-
-      params['document[archive][original]'] = file
-
-      signers.each do |email, act|
-        params['signers[]'] ||= []
-        params['signers[]'].push({email: email, act: act})
-      end
-
-      params['message'] = message
-      params['skip_email'] = skip_email
-
+    def self.parse(client, json)
       new.tap do |document|
         document.client = client
-        document.params = params
-        document.fetch!
+        document.parse(json)
       end
     end
 
-    def self.parse(attributes = {})
-      new.parse(attributes)
-    end
-
-    def fetch!
+    def create
       parse client['documents'].post(params)[:document]
     end
 

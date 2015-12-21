@@ -34,7 +34,14 @@ module Clicksign
     end
 
     def parse
-      -> (json, *) { JSON.parse(json, symbolize_names: true) }
+      lambda do |resp, req, res|
+        case res.code
+        when /2\d\d/
+          JSON.parse(resp, symbolize_names: true)
+        else
+          resp.return!
+        end
+      end
     end
   end
 end

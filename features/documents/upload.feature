@@ -8,4 +8,4 @@ Funcionalidade: Subir documento
   Cenário: Subir documento
     Dado que tenho um arquivo
     Quando subo o arquivo
-    Então devo obter um documento
+    Então obtenho o documento

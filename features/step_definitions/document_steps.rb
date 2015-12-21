@@ -50,6 +50,22 @@ Quando(/^subo o arquivo$/) do
   @document = @client.documents.create(file: @file)
 end
 
-Então(/^devo obter um documento$/) do
+Dado(/^que tenho uma chave válida de documento$/) do
+  @key = 'coffee'
+end
+
+Quando(/^busco o documento pela sua chave$/) do
+  @document = @client.documents.find(@key)
+end
+
+Então(/^obtenho o documento$/) do
   expect(@document).to be_kind_of(Clicksign::Document)
+end
+
+Dado(/^que tenho uma chave inválida de documento$/) do
+  @key = 'invalid'
+end
+
+Então(/^obtenho um documento vazio$/) do
+  expect(@documet).to be_kind_of(NilClass)
 end
