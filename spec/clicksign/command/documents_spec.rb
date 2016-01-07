@@ -7,18 +7,12 @@ describe Clicksign::Command::Documents do
   subject(:client) { Clicksign.client }
 
   context 'without any document' do
-    before do
-      Clicksign.configure { |config| config.access_token = 'empty' }
-    end
-
+    before { Clicksign.configure { |config| config.access_token = 'empty' }}
     it { expect(client.documents.all).to be_empty }
   end
 
   context 'with some documents' do
-    before do
-      Clicksign.configure { |config| config.access_token = 'some' }
-    end
-
+    before { Clicksign.configure { |config| config.access_token = 'some' }}
     it { expect(client.documents.all).to_not be_empty }
   end
 
