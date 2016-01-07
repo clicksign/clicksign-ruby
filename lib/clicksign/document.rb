@@ -20,6 +20,14 @@ module Clicksign
       parse client['documents'][key]['cancel'].post(nil)[:document]
     end
 
+    def resend(email)
+      client['documents'][key]['resend'].post(email: email)
+    rescue RestClient::Exception
+      false
+    else
+      true
+    end
+
     def download(wait = 5)
       Timeout.timeout(wait) do
         loop do

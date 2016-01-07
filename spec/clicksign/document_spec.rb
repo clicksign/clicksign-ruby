@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Clicksign::Document do
   include_context 'mock upload'
   include_context 'mock cancel'
+  include_context 'mock resend'
   include_context 'mock download'
 
   let(:client) { Clicksign.client }
@@ -45,6 +46,16 @@ describe Clicksign::Document do
   context 'canceling' do
     before { document.cancel! }
     it { expect(document.canceled_at).to_not be_nil }
+  end
+
+  context 'resend e-mail to existing signer' do
+    subject(:signer) { document.resend('existing@example.com') }
+    it { expect(signer).to be(true) }
+  end
+
+  context 'resend e-mail to missing signer' do
+    subject(:signer) { document.resend('missing@example.com') }
+    it { expect(signer).to be(false) }
   end
 
   context 'downloading without background processing' do
