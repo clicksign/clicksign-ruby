@@ -28,6 +28,10 @@ module Clicksign
       true
     end
 
+    def hooks
+      client['documents'][key]['hooks'].get
+    end
+
     def download(wait = 5)
       Timeout.timeout(wait) do
         loop do

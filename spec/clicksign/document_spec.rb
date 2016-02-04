@@ -5,6 +5,7 @@ describe Clicksign::Document do
   include_context 'mock cancel'
   include_context 'mock resend'
   include_context 'mock download'
+  include_context 'mock hooks'
 
   let(:client) { Clicksign.client }
   subject(:document) { described_class.parse(client, key: '17', file: 'binary...') }
@@ -76,5 +77,30 @@ describe Clicksign::Document do
   context 'downloading with fail' do
     before { document.key = '500' }
     it { expect { document.download }.to raise_error(RestClient::Exception) }
+  end
+
+  context 'querying webhooks' do
+    context 'when there are none' do
+      before { document.key = '123' }
+
+      it { expect(document.hooks).to eq([]) }
+    end
+
+    context 'when there hooks to document' do
+      before { document.key = '17' }
+
+      let(:hooks) do
+        [
+          { id: 40330, url: 'http://example.com', 
+            created_at: '2016-01-28T19:16:40.587-02:00',
+            updated_at: '2016-01-28T19:16:40.587-02:00' },
+          { id: 40331, url: 'http://example.com/another',
+            created_at: '2016-01-28T19:16:40.587-02:00',
+            updated_at: '2016-01-28T19:16:40.587-02:00' }
+        ]
+      end
+
+      it { expect(document.hooks).to eq(hooks) }
+    end
   end
 end
