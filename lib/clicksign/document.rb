@@ -29,7 +29,13 @@ module Clicksign
     end
 
     def hooks
-      client['documents'][key]['hooks'].get
+      hooks = client['documents'][key]['hooks'].get
+
+      @hooks = hooks.map do |hook|
+        Clicksign::Hook.build(client, self, hook)
+      end
+
+      @hooks
     end
 
     def download(wait = 5)

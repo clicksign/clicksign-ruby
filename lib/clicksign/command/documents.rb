@@ -1,5 +1,6 @@
 require 'clicksign/command'
 require 'clicksign/document'
+require 'clicksign/hook'
 
 module Clicksign::Command::Documents
   def documents
