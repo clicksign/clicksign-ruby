@@ -43,7 +43,7 @@ describe Clicksign::Document do
         'document[archive][original]' => file,
         message: message,
         skip_email: skip_email,
-        'signers[]'  => [signers],
+        'signers'  => [signers],
       }, { accept: 'json' }).and_return({})
 
       Clicksign::Document.create(file, {
